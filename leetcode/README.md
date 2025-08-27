@@ -1,46 +1,60 @@
-# Check if Array Is Sorted and Rotated (Easy)
+# Remove Duplicates from Sorted Array (Easy)
 
 ---
 
-<p>Given an array <code>nums</code>, return <code>true</code><em> if the array was originally sorted in non-decreasing order, then rotated <strong>some</strong> number of positions (including zero)</em>. Otherwise, return <code>false</code>.</p>
+<p>Given an integer array <code>nums</code> sorted in <strong>non-decreasing order</strong>, remove the duplicates <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank"><strong>in-place</strong></a> such that each unique element appears only <strong>once</strong>. The <strong>relative order</strong> of the elements should be kept the <strong>same</strong>. Then return <em>the number of unique elements in </em><code>nums</code>.</p>
 
-<p>There may be <strong>duplicates</strong> in the original array.</p>
+<p>Consider the number of unique elements of <code>nums</code> to be <code>k</code>, to get accepted, you need to do the following things:</p>
 
-<p><strong>Note:</strong> An array <code>A</code> rotated by <code>x</code> positions results in an array <code>B</code> of the same length such that <code>B[i] == A[(i+x) % A.length]</code> for every valid index <code>i</code>.</p>
+<ul>
+	<li>Change the array <code>nums</code> such that the first <code>k</code> elements of <code>nums</code> contain the unique elements in the order they were present in <code>nums</code> initially. The remaining elements of <code>nums</code> are not important as well as the size of <code>nums</code>.</li>
+	<li>Return <code>k</code>.</li>
+</ul>
+
+<p><strong>Custom Judge:</strong></p>
+
+<p>The judge will test your solution with the following code:</p>
+
+<pre>
+int[] nums = [...]; // Input array
+int[] expectedNums = [...]; // The expected answer with correct length
+
+int k = removeDuplicates(nums); // Calls your implementation
+
+assert k == expectedNums.length;
+for (int i = 0; i &lt; k; i++) {
+    assert nums[i] == expectedNums[i];
+}
+</pre>
+
+<p>If all assertions pass, then your solution will be <strong>accepted</strong>.</p>
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
 <pre>
-<strong>Input:</strong> nums = [3,4,5,1,2]
-<strong>Output:</strong> true
-<strong>Explanation:</strong> [1,2,3,4,5] is the original sorted array.
-You can rotate the array by x = 2 positions to begin on the element of value 3: [3,4,5,1,2].
+<strong>Input:</strong> nums = [1,1,2]
+<strong>Output:</strong> 2, nums = [1,2,_]
+<strong>Explanation:</strong> Your function should return k = 2, with the first two elements of nums being 1 and 2 respectively.
+It does not matter what you leave beyond the returned k (hence they are underscores).
 </pre>
 
 <p><strong class="example">Example 2:</strong></p>
 
 <pre>
-<strong>Input:</strong> nums = [2,1,3,4]
-<strong>Output:</strong> false
-<strong>Explanation:</strong> There is no sorted array once rotated that can make nums.
-</pre>
-
-<p><strong class="example">Example 3:</strong></p>
-
-<pre>
-<strong>Input:</strong> nums = [1,2,3]
-<strong>Output:</strong> true
-<strong>Explanation:</strong> [1,2,3] is the original sorted array.
-You can rotate the array by x = 0 positions (i.e. no rotation) to make nums.
+<strong>Input:</strong> nums = [0,0,1,1,1,2,2,3,3,4]
+<strong>Output:</strong> 5, nums = [0,1,2,3,4,_,_,_,_,_]
+<strong>Explanation:</strong> Your function should return k = 5, with the first five elements of nums being 0, 1, 2, 3, and 4 respectively.
+It does not matter what you leave beyond the returned k (hence they are underscores).
 </pre>
 
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
-	<li><code>1 &lt;= nums.length &lt;= 100</code></li>
-	<li><code>1 &lt;= nums[i] &lt;= 100</code></li>
+	<li><code>1 &lt;= nums.length &lt;= 3 * 10<sup>4</sup></code></li>
+	<li><code>-100 &lt;= nums[i] &lt;= 100</code></li>
+	<li><code>nums</code> is sorted in <strong>non-decreasing</strong> order.</li>
 </ul>
 
 
